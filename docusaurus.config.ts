@@ -3,7 +3,7 @@ import type { Config } from '@docusaurus/types';
 import { themes as prismThemes } from 'prism-react-renderer';
 
 const config: Config = {
-  title: 'Zettelkasten',
+  title: 'Digital Garden',
   tagline: 'A poorly organized collection of notes and thoughts',
   // favicon: 'img/favicon.ico',
 
@@ -11,7 +11,7 @@ const config: Config = {
   url: 'https://ingridl-santos.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/zettelkasten/',
+  baseUrl: '/digital-garden/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.

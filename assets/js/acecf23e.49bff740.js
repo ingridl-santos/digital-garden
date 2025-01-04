@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkzettelkasten=self.webpackChunkzettelkasten||[]).push([[1903],{1912:e=>{e.exports=JSON.parse('{"blogBasePath":"/zettelkasten/blog","blogTitle":"Blog","authorsListPath":"/zettelkasten/blog/authors"}')}}]);

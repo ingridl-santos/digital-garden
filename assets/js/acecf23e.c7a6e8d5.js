@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdigital_garden=self.webpackChunkdigital_garden||[]).push([[1903],{1912:a=>{a.exports=JSON.parse('{"blogBasePath":"/digital-garden/blog","blogTitle":"Blog","authorsListPath":"/digital-garden/blog/authors"}')}}]);

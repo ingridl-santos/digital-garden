@@ -1,20 +1,25 @@
 #!/bin/bash
 
 VAULT="/Users/isantos/Documents/Obsidian/second-brain"
-DEST="./content/notes"
+QUARTZ="/Users/isantos/Documents/Projects/digital-garden-site"
+DEST="$QUARTZ/content/notes"
+
+echo "Syncing #publish notes (FLATTENED into graph)..."
 
 rm -rf "$DEST"
 mkdir -p "$DEST"
 
-echo "Syncing #publish notes into /notes..."
-
-cd "$VAULT"
+cd "$VAULT" || exit 1
 
 find . -type f -name "*.md" | while read file; do
   if grep -q "#publish" "$file"; then
-    mkdir -p "$DEST/$(dirname "$file")"
-    cp "$file" "$DEST/$file"
+
+    # remove leading "./"
+    filename=$(basename "$file")
+
+    cp "$file" "$DEST/$filename"
+
   fi
 done
 
-echo "Sync complete."
+echo "Done (graph mode)."

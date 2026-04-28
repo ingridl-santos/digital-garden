@@ -22,7 +22,6 @@ jobs:
           cache: npm
 
       - run: npm ci
-      - run: ./sync.sh
       - run: npx quartz build
 
       - uses: actions/upload-pages-artifact@v3

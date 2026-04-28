@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Quartz 4",
+    pageTitle: "Ingrid Santos — Digital Garden",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -16,8 +16,15 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "en-US",
-    baseUrl: "quartz.jzhao.xyz",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    baseUrl: "ingridl-santos.github.io/digital-garden",
+    ignorePatterns: [
+      "private",
+      "templates",
+      ".obsidian",
+      "Extras",
+      "Inbox",
+      "Later"
+    ],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",

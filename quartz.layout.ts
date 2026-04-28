@@ -1,33 +1,43 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 
-// components shared across all pages
+/**
+ * Shared layout (all pages)
+ */
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
+
   header: [],
+
   afterBody: [],
+
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
+      GitHub: "https://github.com/ingridl-santos",
+      "Digital Garden": "https://ingridl-santos.github.io/digital-garden",
     },
   }),
 }
 
-// components for pages that display a single page (e.g. a single note)
+/**
+ * 🧠 NOTE PAGE (core experience = graph node view)
+ */
 export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
     Component.ConditionalRender({
       component: Component.Breadcrumbs(),
       condition: (page) => page.fileData.slug !== "index",
     }),
+
     Component.ArticleTitle(),
     Component.ContentMeta(),
-    Component.TagList(),
   ],
+
   left: [
     Component.PageTitle(),
+
     Component.MobileOnly(Component.Spacer()),
+
     Component.Flex({
       components: [
         {
@@ -38,21 +48,59 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    Component.Explorer(),
+
+    /**
+     * 🧭 PRIMARY NAV = MOC + STRUCTURE ENTRY POINT
+     */
+    Component.Explorer({
+      title: "🧠 Knowledge Map",
+      folderDefaultState: "collapsed",
+    }),
   ],
+
   right: [
-    Component.Graph(),
-    Component.DesktopOnly(Component.TableOfContents()),
+    /**
+     * 🔥 GRAPH IS PRIMARY DISCOVERY TOOL
+     * (not decorative anymore — it is navigation)
+     */
+    Component.Graph({
+      localGraph: {
+        depth: 2,
+        scale: 1.1,
+        focusOnHover: true,
+      },
+      globalGraph: {
+        scale: 0.6,
+      },
+    }),
+
+    /**
+     * 🔗 RELATION ENGINE (very important)
+     */
     Component.Backlinks(),
+
+    /**
+     * 🏷️ TAGS = weak clustering, not primary structure
+     */
+    Component.TagList(),
   ],
 }
 
-// components for pages that display lists of pages  (e.g. tags or folders)
+/**
+ * 📚 LIST PAGES (tags / folders / MOCs)
+ */
 export const defaultListPageLayout: PageLayout = {
-  beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
+  beforeBody: [
+    Component.Breadcrumbs(),
+    Component.ArticleTitle(),
+    Component.ContentMeta(),
+  ],
+
   left: [
     Component.PageTitle(),
+
     Component.MobileOnly(Component.Spacer()),
+
     Component.Flex({
       components: [
         {
@@ -62,7 +110,26 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    Component.Explorer(),
+
+    /**
+     * 🧠 MOC-FIRST NAVIGATION
+     * This becomes your "entry structure"
+     */
+    Component.Explorer({
+      title: "🧠 MOCs & Structure",
+      folderDefaultState: "open",
+    }),
   ],
-  right: [],
+
+  right: [
+    /**
+     * LIST PAGES SHOULD STILL SHOW GRAPH CONTEXT
+     */
+    Component.Graph({
+      localGraph: {
+        depth: 1,
+        scale: 0.8,
+      },
+    }),
+  ],
 }

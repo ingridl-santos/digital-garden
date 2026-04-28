@@ -1,3 +1,47 @@
 @use "./base.scss";
+@use "./variables.scss" as *;
 
-// put your custom CSS here!
+// ─── Sidebar as Brain Map ────────────────────────────────────────────────────
+
+// Left sidebar: subtle right border separating it from the center
+.sidebar.left {
+  border-right: 1px solid var(--lightgray);
+
+  @media all and ($mobile) {
+    border-right: none;
+    border-bottom: 1px solid var(--lightgray);
+  }
+}
+
+// Explorer: grow to fill available sidebar height for a full navigation panel feel
+.sidebar.left .explorer {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+// Right sidebar: subtle left border separating it from the center
+.sidebar.right {
+  border-left: 1px solid var(--lightgray);
+
+  @media all and ($mobile) {
+    border-left: none;
+  }
+}
+
+// Right sidebar: visual divider between each section (Graph / Backlinks / Tags)
+.sidebar.right > * + * {
+  padding-top: 1rem;
+  border-top: 1px solid var(--lightgray);
+}
+
+// Tags in the right sidebar: inject a "Tags" heading via pseudo-element
+// (.tags is display:flex flex-wrap:wrap so flex: 0 0 100% forces it to full width)
+.sidebar.right .tags::before {
+  content: "Tags";
+  flex: 0 0 100%;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--dark);
+  font-family: var(--headerFont);
+  margin-bottom: 0.1rem;
+}

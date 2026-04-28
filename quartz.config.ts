@@ -2,21 +2,24 @@ import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
 
 /**
- * Quartz 4 Configuration
- *
- * See https://quartz.jzhao.xyz/configuration for more information.
+ * Quartz 4 Configuration — Ingrid's Digital Garden 🌱
  */
+
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Ingrid Santos — Digital Garden",
+    pageTitle: "Ingrid's — Digital Garden 🌱",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
+
     analytics: {
       provider: "plausible",
     },
+
     locale: "en-US",
+
     baseUrl: "ingridl-santos.github.io/digital-garden",
+
     ignorePatterns: [
       "private",
       "templates",
@@ -25,41 +28,51 @@ const config: QuartzConfig = {
       "Inbox",
       "Later"
     ],
+
     defaultDateType: "modified",
+
     theme: {
       fontOrigin: "googleFonts",
       cdnCaching: true,
+
       typography: {
-        header: "Schibsted Grotesk",
-        body: "Source Sans Pro",
-        code: "IBM Plex Mono",
+        header: "Inter",
+        body: "Inter",
+        code: "JetBrains Mono",
       },
+
       colors: {
         lightMode: {
-          light: "#faf8f8",
-          lightgray: "#e5e5e5",
-          gray: "#b8b8b8",
-          darkgray: "#4e4e4e",
-          dark: "#2b2b2b",
-          secondary: "#284b63",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#fff23688",
+          light: "#fafafa",
+          lightgray: "#e5e7eb",
+          gray: "#6b7280",
+          darkgray: "#111827",
+          dark: "#0f1115",
+
+          secondary: "#2563eb",
+          tertiary: "#10b981",
+
+          highlight: "rgba(37, 99, 235, 0.08)",
+          textHighlight: "#2563eb55",
         },
+
         darkMode: {
-          light: "#161618",
-          lightgray: "#393639",
-          gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebec",
-          secondary: "#7b97aa",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#b3aa0288",
+          light: "#0f1115",
+          lightgray: "#1a1f2b",
+          gray: "#8b949e",
+          darkgray: "#e6edf3",
+          dark: "#ffffff",
+
+          secondary: "#7aa2f7",
+          tertiary: "#9ece6a",
+
+          highlight: "rgba(122, 162, 247, 0.12)",
+          textHighlight: "#7aa2f7aa",
         },
       },
     },
   },
+
   plugins: {
     transformers: [
       Plugin.FrontMatter(),
@@ -80,22 +93,29 @@ const config: QuartzConfig = {
       Plugin.Description(),
       Plugin.Latex({ renderEngine: "katex" }),
     ],
-    filters: [Plugin.RemoveDrafts()],
+
+    filters: [
+      Plugin.RemoveDrafts(),
+    ],
+
     emitters: [
       Plugin.AliasRedirects(),
       Plugin.ComponentResources(),
       Plugin.ContentPage(),
       Plugin.FolderPage(),
       Plugin.TagPage(),
+
       Plugin.ContentIndex({
         enableSiteMap: true,
         enableRSS: true,
       }),
+
       Plugin.Assets(),
       Plugin.Static(),
       Plugin.Favicon(),
       Plugin.NotFoundPage(),
-      // Comment out CustomOgImages to speed up build time
+
+      // Optional: disable for faster builds during development
       Plugin.CustomOgImages(),
     ],
   },

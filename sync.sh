@@ -1,16 +1,20 @@
 #!/bin/bash
 
 VAULT="/Users/isantos/Documents/Obsidian/second-brain"
-DEST="./content"
+DEST="./content/notes"
 
 rm -rf "$DEST"
-mkdir "$DEST"
+mkdir -p "$DEST"
 
-echo "Syncing #publish notes..."
+echo "Syncing #publish notes into /notes..."
 
-# Find all notes containing #publish
-grep -rl "#publish" "$VAULT" | while read file; do
-  cp "$file" "$DEST/"
+cd "$VAULT"
+
+find . -type f -name "*.md" | while read file; do
+  if grep -q "#publish" "$file"; then
+    mkdir -p "$DEST/$(dirname "$file")"
+    cp "$file" "$DEST/$file"
+  fi
 done
 
 echo "Sync complete."

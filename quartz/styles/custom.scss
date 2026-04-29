@@ -13,8 +13,9 @@
   }
 }
 
-// Explorer: grow to fill available sidebar height for a full navigation panel feel
-.sidebar.left .explorer {
+// Explorer: grow to fill available sidebar height for a full navigation panel feel.
+// Scoped to :not(.collapsed) so the Quartz collapse rule (flex: 0 1 1.2rem) can take effect.
+.sidebar.left .explorer:not(.collapsed) {
   flex: 1 1 auto;
   min-height: 0;
 }

@@ -50,11 +50,20 @@ export const defaultContentPageLayout: PageLayout = {
 
     /**
      * 🧭 PRIMARY NAV = MOC + STRUCTURE ENTRY POINT
+     * MOC files at root, regular notes inside notes/ folder
      */
     Component.Explorer({
       title: "🧠 Knowledge Map",
-      folderDefaultState: "collapsed",
-    }),
+      folderDefaultState: "collapsed",      sortFn: (a, b) => {
+        // Files (MOCs) before folders (notes/)
+        if (a.isFolder !== b.isFolder) {
+          return a.isFolder ? 1 : -1
+        }
+        return a.displayName.localeCompare(b.displayName, undefined, {
+          numeric: true,
+          sensitivity: "base",
+        })
+      },    }),
   ],
 
   right: [
@@ -67,9 +76,20 @@ export const defaultContentPageLayout: PageLayout = {
         depth: 2,
         scale: 1.1,
         focusOnHover: true,
+        repelForce: 0.6,
+        linkDistance: 40,
+        showTags: true,
+        removeTags: ["publish"],
       },
       globalGraph: {
-        scale: 0.6,
+        scale: 0.9,
+        repelForce: 0.5,
+        centerForce: 0.3,
+        linkDistance: 50,
+        fontSize: 0.5,
+        showTags: true,
+        removeTags: ["publish"],
+        enableRadial: true,
       },
     }),
 
@@ -110,13 +130,19 @@ export const defaultListPageLayout: PageLayout = {
       ],
     }),
 
-    /**
-     * 🧠 MOC-FIRST NAVIGATION
-     * This becomes your "entry structure"
-     */
     Component.Explorer({
-      title: "🧠 MOCs & Structure",
+      title: "🧠 Knowledge Map",
       folderDefaultState: "open",
+      sortFn: (a, b) => {
+        // Files (MOCs) before folders (notes/)
+        if (a.isFolder !== b.isFolder) {
+          return a.isFolder ? 1 : -1
+        }
+        return a.displayName.localeCompare(b.displayName, undefined, {
+          numeric: true,
+          sensitivity: "base",
+        })
+      },
     }),
   ],
 
@@ -128,6 +154,7 @@ export const defaultListPageLayout: PageLayout = {
       localGraph: {
         depth: 1,
         scale: 0.8,
+        removeTags: ["publish"],
       },
     }),
   ],

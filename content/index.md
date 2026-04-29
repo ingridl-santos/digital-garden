@@ -12,7 +12,9 @@ Software Engineer exploring frontend systems, backend architecture, and develope
 
 Start here:
 
-- TBD
+- [[Backend]]
+- [[Frontend]]
+- [[Career]]
 
 ---
 

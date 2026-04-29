@@ -3,8 +3,8 @@ source:
 created: 2024-06-18
 description: Learning notes about design system
 tags:
-  - "#software-architecture"
   - "#publish"
+  - frontend
 ---
 
 A design system is a collection of reusable components, standardized for a particular product, website, or web system. Different from a _style guide_, a design system unifies the language of a product.

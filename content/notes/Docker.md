@@ -3,8 +3,8 @@ source:
 created: 2025-02-26
 description: Base knowledge of docker
 tags:
-  - software-development
   - "#publish"
+  - devops
 ---
 Docker: tool to run containers and build images
 

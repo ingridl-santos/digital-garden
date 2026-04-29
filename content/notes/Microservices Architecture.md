@@ -3,8 +3,8 @@ source:
 created: 2024-10-18
 description: Learning notes about microservices
 tags:
-  - "#software-architecture"
   - "#publish"
+  - architecture
 ---
 
 The microservices architecture is a technique that simplifies complex programs by dividing them into smaller services that can still communicate with each other. **Each service is designed to solve a specific business problem, such as payments or identification.**
